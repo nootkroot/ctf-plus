@@ -1,4 +1,4 @@
-# ctf-plus
+# CTF+
 A fast and highly customizable CTF platform
 
 # Contributing
