@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"path/filepath"
 
+	"github.com/nootkroot/ctf-plus/pkg/log"
 	"github.com/nootkroot/ctf-plus/pkg/config"
 
 	"github.com/gofiber/fiber/v2"
@@ -13,15 +13,15 @@ import (
 )
 
 func main() {
-	conf := config.LoadConfig()
+	cfg := config.LoadConfig()
 
-	viewsPath, err := filepath.Abs(fmt.Sprintf("./themes/"+conf.Theme+"/views"))
+	viewsPath, err := filepath.Abs(fmt.Sprintf("./themes/"+cfg.Theme+"/views"))
 	if err != nil {
-		log.Fatalf("Error while converting to absolute path: %s", err)
+		log.Fatal("Error while converting to absolute path", err)
 	}
 	
 	if _, err := os.Stat(viewsPath); err != nil {
-		log.Fatalf("Error while loading theme: %s", err)
+		log.Fatal("Error while loading theme", err)
 	}
 
 	engine := django.New(viewsPath, ".html")
